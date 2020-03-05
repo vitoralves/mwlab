@@ -6,62 +6,64 @@ import './Workouts.dart';
 class AppDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Drawer(
-      child: ListView(
-        children: <Widget>[
-          DrawerHeader(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              crossAxisAlignment: CrossAxisAlignment.start,
+    return Theme(
+        data: Theme.of(context).copyWith(
+          canvasColor: Colors.transparent,
+        ),
+        child: Drawer(
+          child: Container(
+            color: Color.fromRGBO(29, 36, 41, 0.8),
+            child: ListView(
               children: <Widget>[
-                Text(
-                  'Menu de Opções',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 24,
-                    backgroundColor: Colors.black54,
+                ListTile(
+                  leading: Icon(
+                    Icons.home,
+                    color: Theme.of(context).accentColor,
+                  ),
+                  title: Text(
+                    'Home',
+                    style: Theme.of(context).textTheme.body1,
+                  ),
+                  onTap: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => Home(),
+                      ),
+                    );
+                  },
+                ),
+                ListTile(
+                  leading: Icon(
+                    Icons.fitness_center,
+                    color: Theme.of(context).accentColor,
+                  ),
+                  title: Text(
+                    'Meus Treinos',
+                    style: Theme.of(context).textTheme.body1,
+                  ),
+                  onTap: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => Workouts(),
+                      ),
+                    );
+                  },
+                ),
+                ListTile(
+                  leading: Icon(
+                    Icons.exit_to_app,
+                    color: Theme.of(context).accentColor,
+                  ),
+                  title: Text(
+                    'Sair',
+                    style: Theme.of(context).textTheme.body1,
                   ),
                 ),
               ],
             ),
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                fit: BoxFit.cover,
-                image: NetworkImage(
-                    'https://alexfeds.com/wp-content/uploads/2017/10/gym.jpg'),
-              ),
-            ),
           ),
-          ListTile(
-            leading: Icon(Icons.home),
-            title: Text('Home'),
-            onTap: () {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                  builder: (_) => Home(),
-                ),
-              );
-            },
-          ),
-          ListTile(
-            leading: Icon(Icons.fitness_center),
-            title: Text('Meus Treinos'),
-            onTap: () {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                  builder: (_) => Workouts(),
-                ),
-              );
-            },
-          ),
-          ListTile(
-            leading: Icon(Icons.exit_to_app),
-            title: Text('Sair'),
-          ),
-        ],
-      ),
-    );
+        ));
   }
 }

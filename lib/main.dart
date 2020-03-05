@@ -6,6 +6,7 @@ import './widgets/Home.dart';
 import './providers/WorkoutProvider.dart';
 
 void main() {
+  Provider.debugCheckInvalidValueType = null;
   runApp(MyApp());
 }
 
@@ -21,15 +22,28 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'My Workout',
         theme: ThemeData(
-          backgroundColor: Color.fromRGBO(242, 242, 242, 1),
-          primaryColor: Colors.white,
-          accentColor: Color.fromRGBO(101, 66, 182, 1),
-          textTheme: TextTheme(
-            title: TextStyle(
-              color: Color.fromRGBO(37, 37, 95, 1),
-              fontWeight: FontWeight.bold,
+          appBarTheme: AppBarTheme(
+            color: Color.fromRGBO(29, 34, 37, 0.9),
+            iconTheme: IconThemeData(
+              color: Colors.white,
             ),
-            subtitle: TextStyle(color: Color.fromRGBO(205, 205, 218, 1)),
+          ),
+          backgroundColor: Color.fromRGBO(29, 34, 37, 0.9),
+          primaryColor: Colors.white,
+          accentColor: Color.fromRGBO(0, 223, 100, 1),
+          textTheme: TextTheme(
+            body1: TextStyle(
+              color: Colors.white,
+            ),
+            title: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              fontSize: 30,
+            ),
+            subtitle: TextStyle(
+              color: Color.fromRGBO(109, 121, 125, 1),
+              fontSize: 15,
+            ),
           ),
         ),
         debugShowCheckedModeBanner: false,

@@ -17,3 +17,4 @@
 - criar o provider do workout
 - registrar o provider na classe main
 - executar o add no botão salvar
+- tratando exceções
