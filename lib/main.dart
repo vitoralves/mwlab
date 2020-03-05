@@ -41,7 +41,8 @@ class MyApp extends StatelessWidget {
               fontSize: 30,
             ),
             subtitle: TextStyle(
-              color: Color.fromRGBO(109, 121, 125, 1),
+              // color: Color.fromRGBO(109, 121, 125, 1),
+              color: Color.fromRGBO(151, 152, 152, 1),
               fontSize: 15,
             ),
           ),
