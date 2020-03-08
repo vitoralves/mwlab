@@ -29,6 +29,12 @@ class MyApp extends StatelessWidget {
             ),
           ),
           backgroundColor: Color.fromRGBO(29, 34, 37, 0.9),
+          dialogBackgroundColor: Color.fromRGBO(29, 34, 37, 1),
+          dialogTheme: DialogTheme(
+              contentTextStyle: TextStyle(
+            color: Colors.white,
+          )),
+          cardColor: Color.fromRGBO(60, 70, 72, 0.9),
           primaryColor: Colors.white,
           accentColor: Color.fromRGBO(0, 223, 100, 1),
           textTheme: TextTheme(

@@ -1,9 +1,6 @@
 class Util {
   convertWeekDay(int weekDay) {
     switch (weekDay) {
-      case 0:
-        return 'Domingo';
-        break;
       case 1:
         return 'Segunda-Feira';
         break;
@@ -11,7 +8,7 @@ class Util {
         return 'Terça-Feira';
         break;
       case 3:
-        return 'Qaurta-Feira';
+        return 'Quarta-Feira';
         break;
       case 4:
         return 'Quinta-Feira';
@@ -21,6 +18,9 @@ class Util {
         break;
       case 6:
         return 'Sábado';
+        break;
+      case 7:
+        return 'Domingo';
         break;
       default:
     }
