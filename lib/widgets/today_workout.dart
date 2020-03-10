@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../providers/WorkoutProvider.dart';
+import '../providers/workout_provider.dart';
 
 class TodayWorkout extends StatelessWidget {
   final int weekDay;

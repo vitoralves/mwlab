@@ -7,11 +7,11 @@ import '../models/Workout.dart';
 
 class WorkoutProvider with ChangeNotifier {
   List<Workout> workouts = [];
-  final url = 'https://mwlabdb.firebaseio.com/';
+  final url = 'https://mwlabdb.firebaseio.com/workout';
 
   Future<void> add(Workout w) async {
     print(url + 'workout.json');
-    final response = await http.post(url + 'workout.json',
+    final response = await http.post(url + '.json',
         body: json.encode({
           'id': w.id,
           'name': w.name,
@@ -25,7 +25,7 @@ class WorkoutProvider with ChangeNotifier {
   }
 
   Future<void> update(Workout w) async {
-    final response = await http.patch(url + 'workout/' + w.id + '.json',
+    final response = await http.patch(url + '/$w.id.json',
         body: json.encode({
           'id': w.id,
           'name': w.name,
@@ -41,7 +41,7 @@ class WorkoutProvider with ChangeNotifier {
   }
 
   Future<void> delete(String id) async {
-    final response = await http.delete(url + 'workout/$id.json');
+    final response = await http.delete(url + '/$id.json');
     if (response.statusCode != 200) {
       throw response.body;
     }
@@ -50,9 +50,10 @@ class WorkoutProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> getWorkouts() async {
+  Future<void> get() async {
+    print('api');
     workouts = [];
-    final response = await http.get(url + 'workout.json');
+    final response = await http.get(url + '.json');
     final decoded = json.decode(response.body) as Map<String, dynamic>;
     decoded.forEach((id, data) {
       workouts

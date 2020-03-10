@@ -1,17 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../providers/WorkoutProvider.dart';
+import '../providers/workout_provider.dart';
 
-import './AppDrawer.dart';
-import './WorkoutsManagement.dart';
-import '../widgets/WorkoutCard.dart';
+import '../widgets/app_drawer.dart';
+import './workouts_management.dart';
+import '../widgets/workout_card.dart';
 
 class Workouts extends StatelessWidget {
-  Future<void> _loadWorkouts(BuildContext context) async {
-    await Provider.of<WorkoutProvider>(context, listen: false).getWorkouts();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,7 +35,7 @@ class Workouts extends StatelessWidget {
         ],
       ),
       body: FutureBuilder(
-        future: _loadWorkouts(context),
+        future: Provider.of<WorkoutProvider>(context, listen: false).get(),
         builder: (context, snapshot) {
           return Stack(
             children: [

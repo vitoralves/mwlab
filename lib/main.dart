@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:my_workout/providers/exercises_provider.dart';
 import 'package:provider/provider.dart';
 
-import './widgets/Home.dart';
+import './screens/home.dart';
 
-import './providers/WorkoutProvider.dart';
+import './providers/workout_provider.dart';
 
 void main() {
   Provider.debugCheckInvalidValueType = null;
@@ -17,6 +18,9 @@ class MyApp extends StatelessWidget {
       providers: [
         Provider<WorkoutProvider>(
           create: (_) => WorkoutProvider(),
+        ),
+        Provider<ExercisesProvider>(
+          create: (_) => ExercisesProvider(),
         ),
       ],
       child: MaterialApp(

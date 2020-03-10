@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import './Home.dart';
-import './Workouts.dart';
+import '../screens/home.dart';
+import '../screens/workouts.dart';
 
 class AppDrawer extends StatelessWidget {
   @override

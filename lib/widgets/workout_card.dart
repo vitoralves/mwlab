@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import './ImageClipper.dart';
-import '../utils/Util.dart';
-import './WorkoutsManagement.dart';
+import './image_clipper.dart';
+import '../utils/util.dart';
+import '../screens/workouts_management.dart';
+import '../screens/exercises.dart';
 
 class WorkoutCard extends StatelessWidget {
   final String id;
@@ -72,7 +73,9 @@ class WorkoutCard extends StatelessWidget {
                           ),
                           textColor: Theme.of(context).accentColor,
                           child: Text('Exercícios'),
-                          onPressed: () => print('botao'),
+                          onPressed: () => Navigator.of(context).push(
+                              MaterialPageRoute(
+                                  builder: (_) => Exercises(id, title))),
                         ),
                       ),
                     ),

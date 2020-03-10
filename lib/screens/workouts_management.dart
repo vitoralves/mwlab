@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../models/Workout.dart';
 import 'package:provider/provider.dart';
 
-import '../providers/WorkoutProvider.dart';
+import '../providers/workout_provider.dart';
 
 class WorkoutsManagement extends StatefulWidget {
   @override
