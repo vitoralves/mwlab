@@ -51,7 +51,6 @@ class WorkoutProvider with ChangeNotifier {
   }
 
   Future<void> get() async {
-    print('api');
     workouts = [];
     final response = await http.get(url + '.json');
     final decoded = json.decode(response.body) as Map<String, dynamic>;

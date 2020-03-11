@@ -104,43 +104,6 @@ class _HomeState extends State<Home> {
                       Column(
                         children: [
                           TodayWorkout(_weekDay),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          Card(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(20),
-                              ),
-                            ),
-                            elevation: 5,
-                            child: ListTile(
-                              leading: ClipRRect(
-                                borderRadius: BorderRadius.only(
-                                    topLeft: Radius.circular(10),
-                                    topRight: Radius.circular(10),
-                                    bottomLeft: Radius.circular(20),
-                                    bottomRight: Radius.circular(20)),
-                                child: Image(
-                                  image: NetworkImage(
-                                      'https://i.pinimg.com/originals/79/96/14/799614f500c5e53a59e605d2d85985d3.jpg'),
-                                ),
-                              ),
-                              title: Text(
-                                'Supino inclinado com hateres + crucifixo inclinado com halteres',
-                                style: TextStyle(
-                                  color: Color.fromRGBO(37, 37, 95, 1),
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              subtitle: Text(
-                                '3 séries de 8 repetições cada',
-                                style: TextStyle(
-                                  color: Color.fromRGBO(205, 205, 218, 1),
-                                ),
-                              ),
-                            ),
-                          ),
                         ],
                       )
                     ],

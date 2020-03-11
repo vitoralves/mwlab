@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import '../providers/workout_provider.dart';
 
 import '../widgets/app_drawer.dart';
-import './workouts_management.dart';
+import './workouts_management_screen.dart';
 import '../widgets/workout_card.dart';
 
 class Workouts extends StatelessWidget {

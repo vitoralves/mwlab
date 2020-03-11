@@ -3,6 +3,7 @@ import '../models/Workout.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/workout_provider.dart';
+import '../utils/util.dart';
 
 class WorkoutsManagement extends StatefulWidget {
   @override
@@ -123,18 +124,6 @@ class _WorkoutsManagementState extends State<WorkoutsManagement> {
     );
   }
 
-  InputDecoration _getDecoration(context, label) {
-    return InputDecoration(
-      fillColor: Color.fromRGBO(48, 56, 62, 0.9),
-      filled: true,
-      labelStyle: TextStyle(
-        color: Theme.of(context).textTheme.subtitle.color,
-      ),
-      labelText: label,
-      border: InputBorder.none,
-    );
-  }
-
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
@@ -159,6 +148,8 @@ class _WorkoutsManagementState extends State<WorkoutsManagement> {
 
   @override
   Widget build(BuildContext context) {
+    final _util = Util();
+
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -214,7 +205,7 @@ class _WorkoutsManagementState extends State<WorkoutsManagement> {
                           return null;
                         },
                         style: TextStyle(color: Colors.white),
-                        decoration: _getDecoration(context, 'Nome'),
+                        decoration: _util.getDecoration(context, 'Nome'),
                         cursorColor: Theme.of(context).accentColor,
                       ),
                       TextFormField(
@@ -237,7 +228,7 @@ class _WorkoutsManagementState extends State<WorkoutsManagement> {
                           return null;
                         },
                         style: TextStyle(color: Colors.white),
-                        decoration: _getDecoration(context, 'Imagem URL'),
+                        decoration: _util.getDecoration(context, 'Imagem URL'),
                         cursorColor: Theme.of(context).accentColor,
                       ),
                       DropdownButtonHideUnderline(

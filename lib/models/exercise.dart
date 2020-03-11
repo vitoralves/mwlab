@@ -6,5 +6,5 @@ class Exercise {
   String description;
 
   Exercise(
-      this.id, this.workoutId, this.imageUrl, this.title, this.description);
+      [this.id, this.workoutId, this.imageUrl, this.title, this.description]);
 }

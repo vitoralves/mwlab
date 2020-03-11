@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import './image_clipper.dart';
 import '../utils/util.dart';
-import '../screens/workouts_management.dart';
-import '../screens/exercises.dart';
+import '../screens/workouts_management_screen.dart';
+import '../screens/exercise_screen.dart';
 
 class WorkoutCard extends StatelessWidget {
   final String id;

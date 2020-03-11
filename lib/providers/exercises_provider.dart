@@ -6,10 +6,13 @@ import '../models/exercise.dart';
 
 class ExercisesProvider with ChangeNotifier {
   final String url = 'https://mwlabdb.firebaseio.com/exercise';
-  final List<Exercise> exercises = [];
+  List<Exercise> exercises = [];
 
   Future<void> get(String workoutId) async {
-    final response = await http.get('$url.json');
+    print(workoutId);
+    exercises = [];
+    final response =
+        await http.get('$url.json?orderBy="workoutId"&equalTo="$workoutId"');
     if (response.statusCode != 200) {
       throw response.body;
     }
@@ -25,6 +28,7 @@ class ExercisesProvider with ChangeNotifier {
         ),
       );
     });
+    print(exercises);
     notifyListeners();
   }
 
@@ -41,11 +45,21 @@ class ExercisesProvider with ChangeNotifier {
         },
       ),
     );
-
+    print(response.body);
     if (response.statusCode != 200) {
       throw response.body;
     }
 
+    notifyListeners();
+  }
+
+  Future<void> delete(String id) async {
+    final response = await http.delete(url + '/$id.json');
+    if (response.statusCode != 200) {
+      throw response.body;
+    }
+    int index = exercises.indexWhere((w) => w.id == id);
+    exercises.removeAt(index);
     notifyListeners();
   }
 }
