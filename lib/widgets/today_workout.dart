@@ -99,7 +99,7 @@ class TodayWorkout extends StatelessWidget {
                 ],
               ),
             ),
-            ExerciseList(provider.workouts[index].id),
+            ExerciseList(provider.workouts[index].id, 0.4),
           ],
         );
       }

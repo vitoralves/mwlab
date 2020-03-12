@@ -10,7 +10,6 @@ class WorkoutProvider with ChangeNotifier {
   final url = 'https://mwlabdb.firebaseio.com/workout';
 
   Future<void> add(Workout w) async {
-    print(url + 'workout.json');
     final response = await http.post(url + '.json',
         body: json.encode({
           'id': w.id,
@@ -25,7 +24,7 @@ class WorkoutProvider with ChangeNotifier {
   }
 
   Future<void> update(Workout w) async {
-    final response = await http.patch(url + '/$w.id.json',
+    final response = await http.patch(url + '/${w.id}.json',
         body: json.encode({
           'id': w.id,
           'name': w.name,

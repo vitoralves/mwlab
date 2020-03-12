@@ -9,7 +9,6 @@ class ExercisesProvider with ChangeNotifier {
   List<Exercise> exercises = [];
 
   Future<void> get(String workoutId) async {
-    print(workoutId);
     exercises = [];
     final response =
         await http.get('$url.json?orderBy="workoutId"&equalTo="$workoutId"');
@@ -28,7 +27,6 @@ class ExercisesProvider with ChangeNotifier {
         ),
       );
     });
-    print(exercises);
     notifyListeners();
   }
 
@@ -45,11 +43,10 @@ class ExercisesProvider with ChangeNotifier {
         },
       ),
     );
-    print(response.body);
     if (response.statusCode != 200) {
       throw response.body;
     }
-
+    exercises.add(e);
     notifyListeners();
   }
 

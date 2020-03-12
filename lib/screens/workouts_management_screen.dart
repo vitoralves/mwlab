@@ -128,7 +128,6 @@ class _WorkoutsManagementState extends State<WorkoutsManagement> {
   void didChangeDependencies() {
     super.didChangeDependencies();
     if (_isInit) {
-      print('change dependencies');
       final String id = ModalRoute.of(context).settings.arguments;
       if (id != null) {
         _workout =
