@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_workout/screens/login_screen.dart';
 import 'package:provider/provider.dart';
 
 import './screens/home_screen.dart';
@@ -58,7 +59,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
         debugShowCheckedModeBanner: false,
-        home: Home(),
+        home: LoginScreen(),
       ),
     );
   }
