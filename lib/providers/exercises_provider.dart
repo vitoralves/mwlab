@@ -5,6 +5,11 @@ import 'package:http/http.dart' as http;
 import '../models/exercise.dart';
 
 class ExercisesProvider with ChangeNotifier {
+  final String _token;
+  final String _userId;
+
+  ExercisesProvider(this._token, this._userId);
+
   final String url = 'https://mwlabdb.firebaseio.com/exercise';
   List<Exercise> exercises = [];
 

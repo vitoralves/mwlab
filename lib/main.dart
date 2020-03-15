@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:my_workout/screens/login_screen.dart';
 import 'package:provider/provider.dart';
 
+import './providers/auth_provider.dart';
+import './screens/login_screen.dart';
 import './screens/home_screen.dart';
 
 import './providers/workout_provider.dart';
@@ -17,12 +18,18 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        Provider<WorkoutProvider>(
-          create: (_) => WorkoutProvider(),
+        ChangeNotifierProvider.value(value: AuthProvider()),
+        ChangeNotifierProxyProvider<AuthProvider, WorkoutProvider>(
+          create: (_) => WorkoutProvider('', ''),
+          update: (_, auth, workout) {
+            return WorkoutProvider(auth.token, auth.userId);
+          },
         ),
-        Provider<ExercisesProvider>(
-          create: (_) => ExercisesProvider(),
-        ),
+        ChangeNotifierProxyProvider<AuthProvider, ExercisesProvider>(
+            create: (_) => ExercisesProvider('', ''),
+            update: (_, auth, exercise) {
+              return ExercisesProvider(auth.token, auth.userId);
+            }),
       ],
       child: MaterialApp(
         title: 'My Workout',
@@ -59,7 +66,15 @@ class MyApp extends StatelessWidget {
           ),
         ),
         debugShowCheckedModeBanner: false,
-        home: LoginScreen(),
+        home: Consumer<AuthProvider>(
+          builder: (context, auth, _) {
+            if (auth.logedIn) {
+              return Home();
+            } else {
+              return LoginScreen();
+            }
+          },
+        ),
       ),
     );
   }

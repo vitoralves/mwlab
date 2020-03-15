@@ -6,8 +6,13 @@ import 'package:http/http.dart' as http;
 import '../models/Workout.dart';
 
 class WorkoutProvider with ChangeNotifier {
+  final String _token;
+  final String _userId;
+
   List<Workout> workouts = [];
   final url = 'https://mwlabdb.firebaseio.com/workout';
+
+  WorkoutProvider(this._token, this._userId);
 
   Future<void> add(Workout w) async {
     final response = await http.post(url + '.json',
