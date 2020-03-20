@@ -7,12 +7,12 @@ import '../widgets/today_workout.dart';
 import '../widgets/app_drawer.dart';
 import '../utils/Util.dart';
 
-class Home extends StatefulWidget {
+class HomeScreen extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
 }
 
-class _HomeState extends State<Home> {
+class _HomeState extends State<HomeScreen> {
   final util = Util();
   int _weekDay = DateTime.now().weekday;
 
@@ -53,7 +53,7 @@ class _HomeState extends State<Home> {
       appBar: AppBar(),
       drawer: AppDrawer(),
       body: FutureBuilder(
-        future: Provider.of<WorkoutProvider>(context).get(),
+        future: Provider.of<WorkoutProvider>(context, listen: false).get(),
         builder: (ctx, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Container(

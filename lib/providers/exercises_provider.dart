@@ -6,17 +6,16 @@ import '../models/exercise.dart';
 
 class ExercisesProvider with ChangeNotifier {
   final String _token;
-  final String _userId;
 
-  ExercisesProvider(this._token, this._userId);
+  ExercisesProvider(this._token);
 
   final String url = 'https://mwlabdb.firebaseio.com/exercise';
   List<Exercise> exercises = [];
 
   Future<void> get(String workoutId) async {
     exercises = [];
-    final response =
-        await http.get('$url.json?orderBy="workoutId"&equalTo="$workoutId"');
+    final response = await http
+        .get('$url.json?auth=$_token&orderBy="workoutId"&equalTo="$workoutId"');
     if (response.statusCode != 200) {
       throw response.body;
     }
@@ -37,7 +36,7 @@ class ExercisesProvider with ChangeNotifier {
 
   Future<void> add(Exercise e) async {
     final response = await http.post(
-      '$url.json',
+      '$url.json?auth=$_token',
       body: json.encode(
         {
           'id': e.id,
@@ -56,7 +55,7 @@ class ExercisesProvider with ChangeNotifier {
   }
 
   Future<void> delete(String id) async {
-    final response = await http.delete(url + '/$id.json');
+    final response = await http.delete(url + '/$id.json?auth=$_token');
     if (response.statusCode != 200) {
       throw response.body;
     }

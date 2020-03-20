@@ -26,9 +26,9 @@ class MyApp extends StatelessWidget {
           },
         ),
         ChangeNotifierProxyProvider<AuthProvider, ExercisesProvider>(
-            create: (_) => ExercisesProvider('', ''),
+            create: (_) => ExercisesProvider(''),
             update: (_, auth, exercise) {
-              return ExercisesProvider(auth.token, auth.userId);
+              return ExercisesProvider(auth.token);
             }),
       ],
       child: MaterialApp(
@@ -68,8 +68,9 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         home: Consumer<AuthProvider>(
           builder: (context, auth, _) {
+            print('builda');
             if (auth.logedIn) {
-              return Home();
+              return HomeScreen();
             } else {
               return LoginScreen();
             }

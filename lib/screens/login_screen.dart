@@ -37,11 +37,13 @@ class _LoginScreenState extends State<LoginScreen> {
             await Provider.of<AuthProvider>(context, listen: false)
                 .authenticate(
                     _user['email'], _user['password'], 'signupNewUser');
+            setState(() {
+              _login = true;
+            });
           }
         }
       }
     } catch (error) {
-      print(error);
       var errorMessage = 'Autenticação falhou';
       if (error.toString().contains('EMAIL_EXISTS')) {
         errorMessage = 'Email já cadastrado';
@@ -145,8 +147,14 @@ class _LoginScreenState extends State<LoginScreen> {
                           }
                           return null;
                         },
-                        onFieldSubmitted: (_) => FocusScope.of(context)
-                            .requestFocus(_confirmPasswordFocus),
+                        onFieldSubmitted: (_) {
+                          if (_login) {
+                            _save();
+                          } else {
+                            FocusScope.of(context)
+                                .requestFocus(_confirmPasswordFocus);
+                          }
+                        },
                         textInputAction: TextInputAction.send,
                         focusNode: _passwordFocus,
                         decoration: _util.getDecoration(context, 'Senha'),

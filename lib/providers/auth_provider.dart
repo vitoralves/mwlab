@@ -26,20 +26,23 @@ class AuthProvider with ChangeNotifier {
         'https://www.googleapis.com/identitytoolkit/v3/relyingparty/$action?key=AIzaSyBJvGIWl7YLRoHCtEjbjEaRyIeraqllRfs';
 
     final response = await http.post(url,
-        body: json.encode({'email': email, 'password': password}));
+        body: json.encode(
+            {'email': email, 'password': password, 'returnSecureToken': true}));
     final responseBody = json.decode(response.body);
 
     if (responseBody['error'] != null) {
       throw responseBody['error']['message'];
     }
-
-    _userId = responseBody['localId'];
-    _token = responseBody['idToken'];
+    if (action == 'verifyPassword') {
+      _userId = responseBody['localId'];
+      _token = responseBody['idToken'];
+    }
     notifyListeners();
   }
 
   Future<void> logout() async {
     _userId = null;
     _token = null;
+    notifyListeners();
   }
 }

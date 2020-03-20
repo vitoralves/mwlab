@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:my_workout/screens/login_screen.dart';
 import 'package:provider/provider.dart';
 
 import '../screens/home_screen.dart';
 import '../screens/workouts_screen.dart';
+import '../main.dart';
 
 import '../providers/auth_provider.dart';
 
@@ -32,7 +32,7 @@ class AppDrawer extends StatelessWidget {
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (_) => Home(),
+                        builder: (_) => HomeScreen(),
                       ),
                     );
                   },
@@ -65,10 +65,10 @@ class AppDrawer extends StatelessWidget {
                     style: Theme.of(context).textTheme.body1,
                   ),
                   onTap: () {
-                    Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (_) => LoginScreen(),
-                    ));
                     Provider.of<AuthProvider>(context, listen: false).logout();
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (_) => MyApp(),
+                    ));
                   },
                 ),
               ],

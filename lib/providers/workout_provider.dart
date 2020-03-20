@@ -15,12 +15,13 @@ class WorkoutProvider with ChangeNotifier {
   WorkoutProvider(this._token, this._userId);
 
   Future<void> add(Workout w) async {
-    final response = await http.post(url + '.json',
+    final response = await http.post(url + '.json?auth=$_token',
         body: json.encode({
           'id': w.id,
           'name': w.name,
           'imageUrl': w.imageUrl,
-          'weekDay': w.weekDay
+          'weekDay': w.weekDay,
+          'userId': _userId
         }));
     if (response.statusCode != 200) {
       throw response.body;
@@ -29,12 +30,13 @@ class WorkoutProvider with ChangeNotifier {
   }
 
   Future<void> update(Workout w) async {
-    final response = await http.patch(url + '/${w.id}.json',
+    final response = await http.patch(url + '/${w.id}.json?auth=$_token',
         body: json.encode({
           'id': w.id,
           'name': w.name,
           'imageUrl': w.imageUrl,
-          'weekDay': w.weekDay
+          'weekDay': w.weekDay,
+          'userId': _userId
         }));
     if (response.statusCode != 200) {
       throw response.body;
@@ -45,7 +47,7 @@ class WorkoutProvider with ChangeNotifier {
   }
 
   Future<void> delete(String id) async {
-    final response = await http.delete(url + '/$id.json');
+    final response = await http.delete(url + '/$id.json?auth=$_token');
     if (response.statusCode != 200) {
       throw response.body;
     }
@@ -56,12 +58,15 @@ class WorkoutProvider with ChangeNotifier {
 
   Future<void> get() async {
     workouts = [];
-    final response = await http.get(url + '.json');
+    final response = await http
+        .get(url + '.json?auth=$_token&orderBy="userId"&equalTo="$_userId"');
     final decoded = json.decode(response.body) as Map<String, dynamic>;
     decoded.forEach((id, data) {
-      workouts
-          .add(Workout(id, data['name'], data['imageUrl'], data['weekDay']));
+      workouts.add(Workout(
+          id, data['name'], data['imageUrl'], data['weekDay'], data['userId']));
     });
+
+    print('notify');
     notifyListeners();
   }
 
