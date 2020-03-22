@@ -9,7 +9,8 @@ class LoginScreen extends StatefulWidget {
   _LoginScreenState createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginScreenState extends State<LoginScreen>
+    with SingleTickerProviderStateMixin {
   final _form = GlobalKey<FormState>();
   final _passwordFocus = FocusNode();
   final _confirmPasswordFocus = FocusNode();
@@ -17,6 +18,9 @@ class _LoginScreenState extends State<LoginScreen> {
   final _user = {'email': '', 'password': '', 'confirmPassword': ''};
   bool _loading = false;
   bool _login = true;
+  bool _init = true;
+  AnimationController _controller;
+  Animation<Size> _heightAnimation;
 
   _save() async {
     try {
@@ -83,14 +87,52 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   _switchMode() {
+    if (_login) {
+      _controller.forward();
+    } else {
+      _controller.reverse();
+    }
+
     setState(() {
       _login = !_login;
     });
   }
 
   @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    if (_init) {
+      _init = false;
+      final _mediaQuery = MediaQuery.of(context);
+      print(_mediaQuery);
+      _controller = AnimationController(
+        vsync: this,
+        duration: Duration(milliseconds: 500),
+      );
+      _heightAnimation = Tween<Size>(
+        begin: Size(double.infinity, _mediaQuery.size.height * 0.6),
+        end: Size(double.infinity, 0),
+      ).animate(
+        CurvedAnimation(
+          parent: _controller,
+          curve: Curves.linear,
+        ),
+      );
+
+      _heightAnimation.addListener(() => setState(() {}));
+    }
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+
+    _controller.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final _mediaQuery = MediaQuery.of(context);
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
@@ -109,16 +151,18 @@ class _LoginScreenState extends State<LoginScreen> {
                   key: _form,
                   child: ListView(
                     children: <Widget>[
-                      if (_login)
-                        SizedBox(
-                          height: _mediaQuery.size.height * 0.6,
-                          child: Center(
-                            child: Text(
-                              'MyWorkout',
-                              style: TextStyle(fontSize: 70),
+                      SizedBox(
+                        height: _heightAnimation.value.height,
+                        child: Center(
+                          child: Text(
+                            'MyWorkout',
+                            style: TextStyle(
+                              fontSize: 70,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
                         ),
+                      ),
                       TextFormField(
                         initialValue: '',
                         onSaved: (value) {

@@ -66,7 +66,6 @@ class WorkoutProvider with ChangeNotifier {
           id, data['name'], data['imageUrl'], data['weekDay'], data['userId']));
     });
 
-    print('notify');
     notifyListeners();
   }
 

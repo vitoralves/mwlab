@@ -33,6 +33,7 @@ class Exercises extends StatelessWidget {
         backgroundColor: Theme.of(context).backgroundColor,
       ),
       body: Container(
+        height: double.infinity,
         decoration: BoxDecoration(
           image: DecorationImage(
             image: ExactAssetImage('assets/images/bg4.jpg'),

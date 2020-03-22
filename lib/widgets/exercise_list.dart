@@ -45,60 +45,66 @@ class _ExerciseListState extends State<ExerciseList> {
   @override
   Widget build(BuildContext context) {
     final _mediaQuery = MediaQuery.of(context);
-
-    return _loading
-        ? Center(child: CircularProgressIndicator())
-        : Consumer<ExercisesProvider>(
-            builder: (context, provider, _) {
-              return Container(
-                height: _mediaQuery.size.height * widget.screenPortion,
-                child: ListView.builder(
-                  itemCount: provider.exercises.length,
-                  itemBuilder: (context, index) {
-                    return Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(20),
+    print(widget.screenPortion);
+    return Stack(
+      children: <Widget>[
+        if (_loading) Center(child: CircularProgressIndicator()),
+        Consumer<ExercisesProvider>(
+          builder: (context, provider, _) {
+            return AnimatedContainer(
+              duration: Duration(milliseconds: 500),
+              curve: Curves.easeInSine,
+              height:
+                  _loading ? 0 : _mediaQuery.size.height * widget.screenPortion,
+              child: ListView.builder(
+                itemCount: provider.exercises.length,
+                itemBuilder: (context, index) {
+                  return Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(20),
+                      ),
+                    ),
+                    elevation: 5,
+                    child: ListTile(
+                      leading: ClipRRect(
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(10),
+                            topRight: Radius.circular(10),
+                            bottomLeft: Radius.circular(20),
+                            bottomRight: Radius.circular(20)),
+                        child: FadeInImage(
+                          placeholder: AssetImage('assets/images/halter.png'),
+                          image:
+                              NetworkImage(provider.exercises[index].imageUrl),
                         ),
                       ),
-                      elevation: 5,
-                      child: ListTile(
-                        leading: ClipRRect(
-                          borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(10),
-                              topRight: Radius.circular(10),
-                              bottomLeft: Radius.circular(20),
-                              bottomRight: Radius.circular(20)),
-                          child: Image(
-                            image: NetworkImage(
-                                provider.exercises[index].imageUrl),
-                          ),
-                        ),
-                        trailing: IconButton(
-                          icon: Icon(Icons.delete),
-                          color: Colors.red,
-                          onPressed: () =>
-                              _remove(provider.exercises[index].id),
-                        ),
-                        title: Text(
-                          provider.exercises[index].title,
-                          style: TextStyle(
-                            color: Color.fromRGBO(37, 37, 95, 1),
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        subtitle: Text(
-                          provider.exercises[index].description,
-                          style: TextStyle(
-                            color: Color.fromRGBO(205, 205, 218, 1),
-                          ),
+                      trailing: IconButton(
+                        icon: Icon(Icons.delete),
+                        color: Colors.red,
+                        onPressed: () => _remove(provider.exercises[index].id),
+                      ),
+                      title: Text(
+                        provider.exercises[index].title,
+                        style: TextStyle(
+                          color: Color.fromRGBO(37, 37, 95, 1),
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
-                    );
-                  },
-                ),
-              );
-            },
-          );
+                      subtitle: Text(
+                        provider.exercises[index].description,
+                        style: TextStyle(
+                          color: Color.fromRGBO(205, 205, 218, 1),
+                        ),
+                      ),
+                    ),
+                  );
+                },
+              ),
+            );
+          },
+        ),
+      ],
+    );
   }
 }

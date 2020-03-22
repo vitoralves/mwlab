@@ -5,6 +5,8 @@ import '../screens/home_screen.dart';
 import '../screens/workouts_screen.dart';
 import '../main.dart';
 
+import '../helpers/CustomRoute.dart';
+
 import '../providers/auth_provider.dart';
 
 class AppDrawer extends StatelessWidget {
@@ -47,9 +49,8 @@ class AppDrawer extends StatelessWidget {
                     style: Theme.of(context).textTheme.body1,
                   ),
                   onTap: () {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
+                    Navigator.of(context).pushReplacement(
+                      CustomRoute(
                         builder: (_) => Workouts(),
                       ),
                     );

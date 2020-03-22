@@ -8,6 +8,8 @@ import './screens/home_screen.dart';
 import './providers/workout_provider.dart';
 import './providers/exercises_provider.dart';
 
+import './helpers/CustomRoute.dart';
+
 void main() {
   Provider.debugCheckInvalidValueType = null;
   runApp(MyApp());
@@ -64,6 +66,10 @@ class MyApp extends StatelessWidget {
               fontSize: 15,
             ),
           ),
+          pageTransitionsTheme: PageTransitionsTheme(builders: {
+            TargetPlatform.android: CustomPageTransition(),
+            TargetPlatform.iOS: CustomPageTransition()
+          }),
         ),
         debugShowCheckedModeBanner: false,
         home: Consumer<AuthProvider>(
