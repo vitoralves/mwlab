@@ -44,10 +44,10 @@ class TodayWorkout extends StatelessWidget {
                                 ),
                                 child: Text(
                                   'Treino de hoje',
-                                  style: TextStyle(
-                                    color: Theme.of(context).primaryColor,
-                                    fontSize: 40,
-                                  ),
+                                  // style: TextStyle(
+                                  //   color: Theme.of(context).primaryColor,
+                                  //   fontSize: 40,
+                                  // ),
                                   textAlign: TextAlign.start,
                                   softWrap: true,
                                 ),
@@ -65,13 +65,13 @@ class TodayWorkout extends StatelessWidget {
                               ),
                               child: Text(
                                 provider.workouts[index].name,
-                                style: TextStyle(
-                                  color: Theme.of(context)
-                                      .textTheme
-                                      .subtitle
-                                      .color,
-                                  fontSize: 30,
-                                ),
+                                // style: TextStyle(
+                                //   color: Theme.of(context)
+                                //       .textTheme
+                                //       .subtitle
+                                //       .color,
+                                //   fontSize: 30,
+                                // ),
                                 textAlign: TextAlign.start,
                               ),
                             ),

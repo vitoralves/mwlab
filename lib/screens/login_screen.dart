@@ -157,7 +157,7 @@ class _LoginScreenState extends State<LoginScreen>
                           child: Text(
                             'MyWorkout',
                             style: TextStyle(
-                              fontSize: 70,
+                              fontSize: 65,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -177,9 +177,10 @@ class _LoginScreenState extends State<LoginScreen>
                         onFieldSubmitted: (_) =>
                             FocusScope.of(context).requestFocus(_passwordFocus),
                         textInputAction: TextInputAction.next,
-                        decoration: _util.getDecoration(context, 'Email'),
-                        cursorColor: Theme.of(context).accentColor,
-                        style: TextStyle(color: Colors.white),
+                        decoration: InputDecoration(labelText: 'Email'),
+                        // decoration: _util.getDecoration(context, 'Email'),
+                        // cursorColor: Theme.of(context).accentColor,
+                        // style: TextStyle(color: Colors.white),
                       ),
                       TextFormField(
                         onSaved: (value) {
@@ -201,35 +202,36 @@ class _LoginScreenState extends State<LoginScreen>
                         },
                         textInputAction: TextInputAction.send,
                         focusNode: _passwordFocus,
-                        decoration: _util.getDecoration(context, 'Senha'),
-                        cursorColor: Theme.of(context).accentColor,
-                        style: TextStyle(
-                          color: Colors.white,
-                        ),
+                        decoration: InputDecoration(labelText: 'Senha'),
+                        // cursorColor: Theme.of(context).accentColor,
+                        // style: TextStyle(
+                        //   color: Colors.white,
+                        // ),
                         obscureText: true,
                       ),
-                      if (!_login)
-                        TextFormField(
-                          onSaved: (value) {
-                            _user['confirmPassword'] = value;
-                          },
-                          validator: (value) {
-                            if (value.isEmpty || value.length < 6) {
-                              return 'A senha deve conter no mínimo 6 caracteres';
-                            }
-                            return null;
-                          },
-                          onFieldSubmitted: (_) => _save(),
-                          textInputAction: TextInputAction.send,
-                          focusNode: _confirmPasswordFocus,
-                          decoration:
-                              _util.getDecoration(context, 'Confirmar Senha'),
-                          cursorColor: Theme.of(context).accentColor,
-                          style: TextStyle(
-                            color: Colors.white,
-                          ),
-                          obscureText: true,
-                        ),
+                      // !_login
+                      //     ? TextFormField(
+                      //         onSaved: (value) {
+                      //           _user['confirmPassword'] = value;
+                      //         },
+                      //         validator: (value) {
+                      //           if (value.isEmpty || value.length < 6) {
+                      //             return 'A senha deve conter no mínimo 6 caracteres';
+                      //           }
+                      //           return null;
+                      //         },
+                      //         onFieldSubmitted: (_) => _save(),
+                      //         textInputAction: TextInputAction.send,
+                      //         focusNode: _confirmPasswordFocus,
+                      //         decoration: _util.getDecoration(
+                      //             context, 'Confirmar Senha'),
+                      //         cursorColor: Theme.of(context).accentColor,
+                      //         style: TextStyle(
+                      //           color: Colors.white,
+                      //         ),
+                      //         obscureText: true,
+                      //       )
+                      //     : null,
                       SizedBox(
                         height: 10,
                       ),
@@ -237,8 +239,8 @@ class _LoginScreenState extends State<LoginScreen>
                         width: double.infinity,
                         height: 50,
                         child: RaisedButton(
-                          color: Theme.of(context).accentColor,
-                          textColor: Colors.white,
+                          // color: Theme.of(context).accentColor,
+                          // textColor: Colors.white,
                           child: Text(_login ? 'ENTRAR' : 'CADASTRAR'),
                           onPressed: _save,
                         ),
@@ -247,10 +249,10 @@ class _LoginScreenState extends State<LoginScreen>
                         onPressed: _switchMode,
                         child: Text(
                           _login ? 'Criar conta' : 'Entrar',
-                          style: TextStyle(
-                            color: Colors.blue,
-                            backgroundColor: Theme.of(context).backgroundColor,
-                          ),
+                          // style: TextStyle(
+                          //   color: Colors.blue,
+                          //   backgroundColor: Theme.of(context).backgroundColor,
+                          // ),
                         ),
                       ),
                     ],

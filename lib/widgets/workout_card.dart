@@ -52,26 +52,26 @@ class WorkoutCard extends StatelessWidget {
                   children: <Widget>[
                     Text(
                       title,
-                      style: TextStyle(
-                          color: Theme.of(context).primaryColor,
-                          fontSize: Theme.of(context).textTheme.title.fontSize),
+                      // style: TextStyle(
+                      //     color: Theme.of(context).primaryColor,
+                      //     fontSize: Theme.of(context).textTheme.title.fontSize),
                     ),
                     Text(
                       util.convertWeekDay(int.parse(subtitle)),
-                      style: TextStyle(
-                        color: Theme.of(context).textTheme.subtitle.color,
-                        fontSize: Theme.of(context).textTheme.subtitle.fontSize,
-                      ),
+                      // style: TextStyle(
+                      //   color: Theme.of(context).textTheme.subtitle.color,
+                      //   fontSize: Theme.of(context).textTheme.subtitle.fontSize,
+                      // ),
                     ),
                     SizedBox(
                       width: double.infinity,
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: OutlineButton(
-                          borderSide: BorderSide(
-                            color: Theme.of(context).accentColor,
-                          ),
-                          textColor: Theme.of(context).accentColor,
+                          // borderSide: BorderSide(
+                          //   color: Theme.of(context).accentColor,
+                          // ),
+                          // textColor: Theme.of(context).accentColor,
                           child: Text('Exercícios'),
                           onPressed: () => Navigator.of(context).push(
                               MaterialPageRoute(

@@ -61,12 +61,12 @@ class _AddExerciseScreenState extends State<AddExerciseScreen> {
       appBar: AppBar(
         title: Text(
           'Novo Exercício',
-          style: TextStyle(
-            color: Theme.of(context).textTheme.title.color,
-          ),
+          // style: TextStyle(
+          //   color: Theme.of(context).textTheme.title.color,
+          // ),
         ),
         elevation: 0,
-        backgroundColor: Theme.of(context).backgroundColor,
+        // backgroundColor: Theme.of(context).backgroundColor,
       ),
       body: Container(
         decoration: BoxDecoration(
@@ -86,9 +86,9 @@ class _AddExerciseScreenState extends State<AddExerciseScreen> {
                 : ListView(
                     children: <Widget>[
                       TextFormField(
-                        style: TextStyle(color: Colors.white),
+                        // style: TextStyle(color: Colors.white),
                         autofocus: true,
-                        decoration: _util.getDecoration(context, 'Nome'),
+                        // decoration: _util.getDecoration(context, 'Nome'),
                         textInputAction: TextInputAction.next,
                         onSaved: (value) {
                           _exercise.title = value;
@@ -105,9 +105,9 @@ class _AddExerciseScreenState extends State<AddExerciseScreen> {
                         },
                       ),
                       TextFormField(
-                        style: TextStyle(color: Colors.white),
+                        // style: TextStyle(color: Colors.white),
                         focusNode: _imageFocus,
-                        decoration: _util.getDecoration(context, 'Imagem URL'),
+                        // decoration: _util.getDecoration(context, 'Imagem URL'),
                         textInputAction: TextInputAction.next,
                         onSaved: (value) {
                           _exercise.imageUrl = value;
@@ -125,9 +125,9 @@ class _AddExerciseScreenState extends State<AddExerciseScreen> {
                         },
                       ),
                       TextFormField(
-                        style: TextStyle(color: Colors.white),
+                        // style: TextStyle(color: Colors.white),
                         focusNode: _descriptionFocus,
-                        decoration: _util.getDecoration(context, 'Descrição'),
+                        // decoration: _util.getDecoration(context, 'Descrição'),
                         onSaved: (value) {
                           _exercise.description = value;
                         },
@@ -148,8 +148,8 @@ class _AddExerciseScreenState extends State<AddExerciseScreen> {
                         height: 50,
                         child: RaisedButton(
                           child: Text('SALVAR'),
-                          color: Theme.of(context).accentColor,
-                          textColor: Colors.white,
+                          // color: Theme.of(context).accentColor,
+                          // textColor: Colors.white,
                           onPressed: () => _save(context),
                         ),
                       ),

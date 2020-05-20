@@ -23,16 +23,16 @@ class _HomeState extends State<HomeScreen> {
         child: Text(util.convertWeekDay(i).toString().substring(0, 3)),
         shape: RoundedRectangleBorder(
           side: BorderSide(
-            color: Theme.of(context).accentColor,
+            // color: Theme.of(context).accentColor,
             style: BorderStyle.solid,
           ),
           borderRadius: BorderRadius.circular(50),
         ),
-        textColor: _weekDay == i
-            ? Theme.of(context).primaryColor
-            : Theme.of(context).accentColor,
-        color:
-            _weekDay == i ? Theme.of(context).accentColor : Colors.transparent,
+        // textColor: _weekDay == i
+        //     ? Theme.of(context).primaryColor
+        //     : Theme.of(context).accentColor,
+        // color:
+        //     _weekDay == i ? Theme.of(context).accentColor : Colors.transparent,
         onPressed: () => _updateWeekDay(i),
       ));
     }
@@ -50,7 +50,14 @@ class _HomeState extends State<HomeScreen> {
     final _mediaQuery = MediaQuery.of(context);
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text(
+          'Home',
+          // style: TextStyle(
+          //   color: Theme.of(context).textTheme.title.color,
+          // ),
+        ),
+      ),
       drawer: AppDrawer(),
       body: FutureBuilder(
         future: Provider.of<WorkoutProvider>(context, listen: false).get(),
@@ -92,7 +99,7 @@ class _HomeState extends State<HomeScreen> {
                       SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
                         child: Container(
-                          color: Theme.of(context).backgroundColor,
+                          // color: Theme.of(context).backgroundColor,
                           child: ButtonBar(
                             children: _getButtonBar(context),
                           ),

@@ -18,17 +18,17 @@ class AppDrawer extends StatelessWidget {
         ),
         child: Drawer(
           child: Container(
-            color: Color.fromRGBO(29, 36, 41, 0.8),
+            // color: Color.fromRGBO(29, 36, 41, 0.8),
             child: ListView(
               children: <Widget>[
                 ListTile(
                   leading: Icon(
                     Icons.home,
-                    color: Theme.of(context).accentColor,
+                    // color: Theme.of(context).accentColor,
                   ),
                   title: Text(
                     'Home',
-                    style: Theme.of(context).textTheme.body1,
+                    // style: Theme.of(context).textTheme.body1,
                   ),
                   onTap: () {
                     Navigator.pushReplacement(
@@ -42,11 +42,11 @@ class AppDrawer extends StatelessWidget {
                 ListTile(
                   leading: Icon(
                     Icons.fitness_center,
-                    color: Theme.of(context).accentColor,
+                    // color: Theme.of(context).accentColor,
                   ),
                   title: Text(
                     'Meus Treinos',
-                    style: Theme.of(context).textTheme.body1,
+                    // style: Theme.of(context).textTheme.body1,
                   ),
                   onTap: () {
                     Navigator.of(context).pushReplacement(
@@ -59,11 +59,11 @@ class AppDrawer extends StatelessWidget {
                 ListTile(
                   leading: Icon(
                     Icons.exit_to_app,
-                    color: Theme.of(context).accentColor,
+                    // color: Theme.of(context).accentColor,
                   ),
                   title: Text(
                     'Sair',
-                    style: Theme.of(context).textTheme.body1,
+                    // style: Theme.of(context).textTheme.body1,
                   ),
                   onTap: () {
                     Provider.of<AuthProvider>(context, listen: false).logout();

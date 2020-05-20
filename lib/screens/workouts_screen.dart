@@ -16,7 +16,7 @@ class Workouts extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           'Treinos',
-          style: TextStyle(color: Theme.of(context).textTheme.title.color),
+          // style: TextStyle(color: Theme.of(context).textTheme.title.color),
         ),
         elevation: 0,
         actions: <Widget>[

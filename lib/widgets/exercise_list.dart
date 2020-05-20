@@ -48,7 +48,7 @@ class _ExerciseListState extends State<ExerciseList> {
     print(widget.screenPortion);
     return Stack(
       children: <Widget>[
-        if (_loading) Center(child: CircularProgressIndicator()),
+        // _loading ? Center(child: CircularProgressIndicator()) : null,
         Consumer<ExercisesProvider>(
           builder: (context, provider, _) {
             return AnimatedContainer(
@@ -81,21 +81,21 @@ class _ExerciseListState extends State<ExerciseList> {
                       ),
                       trailing: IconButton(
                         icon: Icon(Icons.delete),
-                        color: Colors.red,
+                        // color: Colors.red,
                         onPressed: () => _remove(provider.exercises[index].id),
                       ),
                       title: Text(
                         provider.exercises[index].title,
                         style: TextStyle(
-                          color: Color.fromRGBO(37, 37, 95, 1),
+                          // color: Color.fromRGBO(37, 37, 95, 1),
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                       subtitle: Text(
                         provider.exercises[index].description,
-                        style: TextStyle(
-                          color: Color.fromRGBO(205, 205, 218, 1),
-                        ),
+                        // style: TextStyle(
+                        //   color: Color.fromRGBO(205, 205, 218, 1),
+                        // ),
                       ),
                     ),
                   );

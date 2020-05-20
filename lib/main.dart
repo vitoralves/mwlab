@@ -38,33 +38,49 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           appBarTheme: AppBarTheme(
             color: Color.fromRGBO(29, 34, 37, 0.9),
+            textTheme: TextTheme(
+              headline6: TextStyle(
+                color: Colors.white,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
             iconTheme: IconThemeData(
               color: Colors.white,
             ),
           ),
-          backgroundColor: Color.fromRGBO(29, 34, 37, 0.9),
+          scaffoldBackgroundColor: Color.fromRGBO(29, 34, 37, 0.9),
           dialogBackgroundColor: Color.fromRGBO(29, 34, 37, 1),
           dialogTheme: DialogTheme(
               contentTextStyle: TextStyle(
             color: Colors.white,
           )),
           cardColor: Color.fromRGBO(60, 70, 72, 0.9),
-          primaryColor: Colors.white,
           accentColor: Color.fromRGBO(0, 223, 100, 1),
+          cursorColor: Color.fromRGBO(0, 223, 100, 1),
           textTheme: TextTheme(
-            body1: TextStyle(
+            bodyText1: TextStyle(
               color: Colors.white,
             ),
-            title: TextStyle(
+            bodyText2: TextStyle(
               color: Colors.white,
-              fontWeight: FontWeight.bold,
-              fontSize: 30,
             ),
-            subtitle: TextStyle(
-              // color: Color.fromRGBO(109, 121, 125, 1),
-              color: Color.fromRGBO(151, 152, 152, 1),
-              fontSize: 15,
+            subtitle1: TextStyle(
+              color: Colors.white,
             ),
+          ),
+          inputDecorationTheme: InputDecorationTheme(
+            fillColor: Color.fromRGBO(48, 56, 62, 0.9),
+            filled: true,
+            border: InputBorder.none,
+            labelStyle: TextStyle(color: Color.fromRGBO(151, 152, 152, 1)),
+          ),
+          buttonTheme: ButtonThemeData(
+            buttonColor: Color.fromRGBO(0, 223, 100, 1),
+            textTheme: ButtonTextTheme.primary,
+            colorScheme: Theme.of(context).colorScheme.copyWith(
+                  primary: Color.fromRGBO(0, 223, 100, 1),
+                ),
           ),
           pageTransitionsTheme: PageTransitionsTheme(builders: {
             TargetPlatform.android: CustomPageTransition(),
@@ -74,7 +90,6 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         home: Consumer<AuthProvider>(
           builder: (context, auth, _) {
-            print('builda');
             if (auth.logedIn) {
               return HomeScreen();
             } else {

@@ -157,7 +157,7 @@ class _WorkoutsManagementState extends State<WorkoutsManagement> {
                 IconButton(
                   icon: Icon(
                     Icons.delete,
-                    color: Colors.red,
+                    // color: Colors.red,
                   ),
                   onPressed: _showConfirmationModal,
                 ),
@@ -165,12 +165,12 @@ class _WorkoutsManagementState extends State<WorkoutsManagement> {
             : [],
         title: Text(
           'Novo Treino',
-          style: TextStyle(
-            color: Theme.of(context).textTheme.title.color,
-          ),
+          // style: TextStyle(
+          //   color: Theme.of(context).textTheme.title.color,
+          // ),
         ),
         elevation: 0,
-        backgroundColor: Theme.of(context).backgroundColor,
+        // backgroundColor: Theme.of(context).backgroundColor,
       ),
       body: Container(
         decoration: BoxDecoration(
@@ -203,9 +203,9 @@ class _WorkoutsManagementState extends State<WorkoutsManagement> {
                           }
                           return null;
                         },
-                        style: TextStyle(color: Colors.white),
-                        decoration: _util.getDecoration(context, 'Nome'),
-                        cursorColor: Theme.of(context).accentColor,
+                        // style: TextStyle(color: Colors.white),
+                        // decoration: _util.getDecoration(context, 'Nome'),
+                        // cursorColor: Theme.of(context).accentColor,
                       ),
                       TextFormField(
                         initialValue: _workout.imageUrl,
@@ -226,14 +226,14 @@ class _WorkoutsManagementState extends State<WorkoutsManagement> {
                           }
                           return null;
                         },
-                        style: TextStyle(color: Colors.white),
-                        decoration: _util.getDecoration(context, 'Imagem URL'),
-                        cursorColor: Theme.of(context).accentColor,
+                        // style: TextStyle(color: Colors.white),
+                        // decoration: _util.getDecoration(context, 'Imagem URL'),
+                        // cursorColor: Theme.of(context).accentColor,
                       ),
                       DropdownButtonHideUnderline(
                         child: Container(
                           padding: EdgeInsets.only(left: 10, right: 10),
-                          color: Color.fromRGBO(48, 56, 62, 0.9),
+                          // color: Color.fromRGBO(48, 56, 62, 0.9),
                           height: 60,
                           child: DropdownButton(
                               focusNode: _dropDownFocus,
@@ -242,17 +242,17 @@ class _WorkoutsManagementState extends State<WorkoutsManagement> {
                               isExpanded: true,
                               hint: Text(
                                 'Dia da semana',
-                                style: TextStyle(
-                                    color: Theme.of(context)
-                                        .textTheme
-                                        .subtitle
-                                        .color),
+                                // style: TextStyle(
+                                //     color: Theme.of(context)
+                                //         .textTheme
+                                //         .subtitle
+                                //         .color),
                               ),
                               iconEnabledColor: Theme.of(context).accentColor,
-                              style: TextStyle(
-                                color:
-                                    Theme.of(context).textTheme.subtitle.color,
-                              ),
+                              // style: TextStyle(
+                              //   color:
+                              //       Theme.of(context).textTheme.subtitle.color,
+                              // ),
                               items: _dropDownOptions.map((e) {
                                 return DropdownMenuItem(
                                   child: Text(e['name']),
@@ -270,17 +270,17 @@ class _WorkoutsManagementState extends State<WorkoutsManagement> {
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
                           _dropdownValid ? '' : 'Selecione um dia da semana',
-                          style: TextStyle(
-                              color: Color.fromRGBO(211, 46, 47, 1),
-                              fontSize: 12),
+                          // style: TextStyle(
+                          //     color: Color.fromRGBO(211, 46, 47, 1),
+                          //     fontSize: 12),
                         ),
                       ),
                       SizedBox(
                         height: 50,
                         child: RaisedButton(
                           child: Text('SALVAR'),
-                          color: Theme.of(context).accentColor,
-                          textColor: Colors.white,
+                          // color: Theme.of(context).accentColor,
+                          // textColor: Colors.white,
                           onPressed: _save,
                         ),
                       ),

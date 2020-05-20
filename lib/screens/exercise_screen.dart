@@ -26,11 +26,11 @@ class Exercises extends StatelessWidget {
         title: Text(
           'Exercícios $workoutName',
           style: TextStyle(
-            color: Theme.of(context).textTheme.title.color,
-          ),
+              // color: Theme.of(context).textTheme.title.color,
+              ),
         ),
         elevation: 0,
-        backgroundColor: Theme.of(context).backgroundColor,
+        // backgroundColor: Theme.of(context).backgroundColor,
       ),
       body: Container(
         height: double.infinity,
